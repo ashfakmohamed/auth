@@ -1,0 +1,19 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+<div class="user-panel">
+    <h1>Hello {{ user.username }}</h1>
+    <div class="apps-list">
+        {% for app in apps %}
+        <div class="app-item">
+            <h2>{{ app.name }}</h2>
+            <p>{{ app.category }} - {{ app.sub_category }}</p>
+            <p>{{ app.points }} Points</p>
+            <button onclick="startTask('{{ app.id|escapejs }}')">Start Task</button>
+        </div>
+        {% endfor %}
+    </div>
+    <div id="drop-area" data-app-id="">
+        <p>Upload Screenshots to complete the TASK</p>
+    </div>
+</div>
+{% endblock %}
