@@ -1,0 +1,8 @@
+A. For scheduling periodic tasks like downloading a list of ISINs every 24 hours, I would use Celery with Redis or RabbitMQ. Celery is reliable, scalable, 
+and supports scheduling periodic tasks using its beat scheduler. Redis or RabbitMQ provides the messaging infrastructure needed for Celery to work. 
+This setup is ideal for handling large volumes of tasks efficiently.
+
+B. Use Flask for smaller, lightweight applications where flexibility and simplicity are key. Flask is great for projects where you want more control over components and libraries.
+
+Use Django for larger, more complex applications where a full-featured framework with built-in components like authentication, admin interface, 
+and ORM is desired. Django is well-suited for monolithic applications where all functionality is contained within a single application.
