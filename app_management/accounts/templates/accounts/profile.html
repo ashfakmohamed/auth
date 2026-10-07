@@ -1,9 +1,10 @@
 {% extends 'accounts/base.html' %}
+{% block title %}Profile · App Management{% endblock %}
 {% block content %}
 <div class="profile">
     <h1>Profile</h1>
     <p>Username: {{ user.username }}</p>
-    <p>Email: {{ user.email }}</p>
+    <p>Email: {{ user.email|default:"Not provided" }}</p>
     <p>Points: {{ user.points }}</p>
 </div>
 {% endblock %}

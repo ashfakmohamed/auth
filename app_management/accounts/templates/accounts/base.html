@@ -1,16 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Management</title>
+    <title>{% block title %}App Management{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <div id="app">
-        {% block content %}
-        {% endblock %}
-    </div>
-    <script src="{% static 'script.js' %}"></script>
+    <nav>
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+            </form>
+        {% endif %}
+    </nav>
+    <main id="app">{% block content %}{% endblock %}</main>
+    <script src="{% static 'script.js' %}" defer></script>
 </body>
 </html>

@@ -1,19 +1,26 @@
 {% extends 'accounts/base.html' %}
+{% block title %}Dashboard · App Management{% endblock %}
 {% block content %}
 <div class="user-panel">
     <h1>Hello {{ user.username }}</h1>
     <div class="apps-list">
         {% for app in apps %}
-        <div class="app-item">
+        <article class="app-item">
             <h2>{{ app.name }}</h2>
-            <p>{{ app.category }} - {{ app.sub_category }}</p>
-            <p>{{ app.points }} Points</p>
-            <button onclick="startTask('{{ app.id|escapejs }}')">Start Task</button>
-        </div>
+            <p>{{ app.category }}{% if app.sub_category %} · {{ app.sub_category }}{% endif %}</p>
+            <p>{{ app.points }} points</p>
+            <a href="{{ app.link }}" target="_blank" rel="noopener noreferrer">Open app</a>
+            <button type="button" data-start-task="{{ app.id }}">Upload proof</button>
+        </article>
+        {% empty %}
+        <p>No apps are available.</p>
         {% endfor %}
     </div>
-    <div id="drop-area" data-app-id="">
-        <p>Upload Screenshots to complete the TASK</p>
+    <div id="drop-area" data-app-id="" hidden>
+        <label for="screenshot">Upload a task screenshot</label>
+        <input id="screenshot" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+        <button id="upload-task" type="button">Submit screenshot</button>
+        <p id="upload-status" role="status"></p>
     </div>
 </div>
 {% endblock %}
