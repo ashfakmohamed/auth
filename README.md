@@ -1,5 +1,10 @@
 # App Management API
 
+<!-- profile-upgrade -->
+[![Django CI](https://github.com/ashfakmohamed/django-app-management-api/actions/workflows/ci.yml/badge.svg)](https://github.com/ashfakmohamed/django-app-management-api/actions/workflows/ci.yml)
+
+**Stack:** Python · Django · Django REST Framework · OpenAPI
+
 A Django application where administrators publish apps and authenticated users upload task-completion screenshots. Administrators can review tasks and approve points.
 
 ## Security
@@ -40,3 +45,10 @@ For token-based API access, create a token with:
 
     python app_management/manage.py check
     python app_management/manage.py test
+
+## Engineering quality
+
+- GitHub Actions runs Django checks and the automated test suite on every push.
+- Runtime configuration is documented through `.env.example`; secrets are not committed.
+- Local databases, uploaded media, caches, and virtual environments are excluded from version control.
+- Security-sensitive behavior and authorization rules are documented above.
